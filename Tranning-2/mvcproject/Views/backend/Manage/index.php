@@ -34,7 +34,7 @@
         <?php 
         
         echo '<h2 >'. strtoupper($table).'</h2>';
-        echo '<button class="btn btn-primary cover"><a href=""><h2 class="new">New</h2></a></button> ';
+        echo '<button class="btn btn-primary cover"><a href="http://localhost/tranning-2/mvcproject/index.php?controller=manage&action=newRow"><h2 class="new">New</h2></a></button> ';
         ?>
         <hr style="width: 100%;">
         <span> - List Post</span>
@@ -61,9 +61,9 @@
                       echo '<td> '. $manage[$i]['Title'] . '</td>';
                       echo '<td>' . $manage[$i]['Status'] . '</td>';
                       echo '<td>' ;
-                      echo '<a href="">Show</a>| ';
+                      echo '<a href="http://localhost/tranning-2/mvcproject/index.php?controller=manage&id='. $manage[$i]['Id'].'">Show</a>| ';
                       echo '<a href="http://localhost/tranning-2/mvcproject/index.php?controller=manage&action=edit&id='. $manage[$i]['Id'].'">Edit</a>| ';
-                      echo '<a href="">Delete</a>';
+                      echo '<a href="http://localhost/tranning-2/mvcproject/index.php?controller=manage&action=delete&id='. $manage[$i]['Id'].'">Delete</a>';
                       echo '</td>';                       
                       echo '</tr>';
                     }
@@ -71,7 +71,23 @@
         ?>
             </tbody>
         </table>
+        <?php
 
+            if(count($dataId ) == 1){
+
+                echo '<span> - Show post:</span> ';            
+                echo '<button class= "back "><a  href="http://localhost/tranning-2/mvcproject/index.php?controller=manage">Back</a></button>';
+                echo '<table style="width:90%" style="border-collapse:collapse" >';
+                echo '<thead>';
+                echo '<tr>';
+                echo '<th style = "width:20%"><img style ="width : 200px" src='.$dataId[0]['Image'].'></th>';
+                echo  '<th style = "width:80%">'.$dataId[0]['Description'].'</th>'    ;            
+                echo  '</tr>';
+                echo    '</thead>';
+                echo '</table>';
+            }
+
+        ?>
     </div>
 </body>
 

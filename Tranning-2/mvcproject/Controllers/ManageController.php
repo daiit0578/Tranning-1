@@ -12,6 +12,62 @@ class ManageController extends BaseController
 
     public function index()
     {
+        $id = $_GET['id'] ?? 0;
+        $dataId =[];
+        if($id)
+            $dataId = $this->manageModel->getById($id);
+        $table = $this->manageModel::TABLE;
+        
+        $manage = $this->manageModel->getAll();
+        return $this->view('backend.Manage.index',[
+            'manage'=>$manage,
+            'table' =>$table,
+            'dataId' => $dataId
+        ]);
+    }
+    public function createNewRow()
+    {
+        if(isset($_POST['title'],$_POST['description'],$_POST['image'],$_POST['status'],$_POST['id']
+                ,$_POST['create_at'],$_POST['update_at'])){
+            $title =$_POST['title'];
+            $description = $_POST['description'];
+            $image = 'Views/assets/image/'.$_POST['image'];
+            $status = $_POST['status'];
+            $id = $_POST['id'];
+            $create_at = $_POST['create_at'];
+            $update_at = $_POST['update_at'];
+            $data = [$id,$title,$description,$image,$status,$create_at,$update_at];            
+            $this->manageModel->newRow($data);
+        }
+        $table = $this->manageModel::TABLE;
+        $dataId =[];
+        
+        $manage = $this->manageModel->getAll();
+        return $this->view('backend.Manage.index',[
+            'manage'=>$manage,
+            'table' =>$table,
+            'dataId' => $dataId
+        ]);
+    }
+    public function newRow ()
+    {
+        
+        return $this->view('backend.Manage.newRow',[
+
+        ]);
+    }
+    public function edit()
+    {
+        
+        $id = $_GET['id'];
+        $listId = $this->manageModel->getById($id);
+
+        return $this->view('backend.Manage.edit',[
+            'listId'=>$listId
+        ]);
+    }
+    public function postEdit()
+    {
         if(isset($_POST['title'],$_POST['description'],$_POST['image'],$_POST['status'],$_GET['id'])){
             $title =$_POST['title'];
             $description = $_POST['description'];
@@ -23,21 +79,31 @@ class ManageController extends BaseController
         }
         
         $table = $this->manageModel::TABLE;
+        $dataId =[];
         
         $manage = $this->manageModel->getAll();
         return $this->view('backend.Manage.index',[
             'manage'=>$manage,
-            'table' =>$table
+            'table' =>$table,
+            'dataId' => $dataId
         ]);
     }
-    public function edit()
+    public function delete()
     {
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+            $this ->manageModel->delete($id);
+        }
+        $table = $this->manageModel::TABLE;
         
-        $id = $_GET['id'];
-        $listId = $this->manageModel->getById($id);
+        $manage = $this->manageModel->getAll();
+        $dataId =[];
 
-        return $this->view('backend.Manage.edit',[
-            'listId'=>$listId
+        return $this->view('backend.Manage.index',[
+            'manage'=>$manage,
+            'table' =>$table,
+            'dataId' => $dataId
         ]);
     }
 }

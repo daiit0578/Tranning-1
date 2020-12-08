@@ -74,14 +74,7 @@ class BaseModel extends Database
      * xoa 1 ban ghi
      * 
      */
-    public function update()
-    {
-
-    }
-    public function delete()
-    {
-
-    }
+    
     public function _query($sql)
     {
        return mysqli_query($this->connect,$sql);

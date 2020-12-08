@@ -6,45 +6,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 
     <title>Document</title>
-    <style>
-    .first{
-        width:30%;
-    }
-    .last{
-        width:70%;
-    }
-    img{
-        width:120px
-    }
-    
-    </style>
 </head>
 <body>
-
-    <div class="container">
-    <span style="display:inline" >Edit</span>
-    <button style="margin-left:850px"  class="btn btn-primary">Show</button>    
-    <button class="btn btn-light"><a href="http://localhost/tranning-2/mvcproject/index.php?controller=manage"> Back</a></button>
+<div class="container">
+      
+    <button class="btn btn-light" style="margin-left:850px;margin-top:50px"><a href="http://localhost/tranning-2/mvcproject/index.php?controller=manage"> Back</a></button>
     <hr style="Width:100%">
 
     <table class="table table-striped"  >
-    <?php
-    echo '<form action="index.php?controller=manage&action=postEdit&id='.$listId[0]['Id'].'"  method ="post">'
-    ?>
-
-    <form action="index.php?controller=manage&id =$listId[0]['id']"  method ="post">
+   
+<form action="index.php?controller=manage&action=createNewRow" method ='post'>
+    <tr>
+        <td>Id</td>
+        <?php
+        echo ' <td class="last"><input type="text" name="id" > </td>';
+        ?>       
+    </tr>
     
     <tr>
     <td class = "first">Title</td>
     <?php
-        echo ' <td class="last"><input type="text" name="title" id="" value="'.$listId[0]['Title'].'"> </td>';
+        echo ' <td class="last"><input type="text" name="title" > </td>';
     ?>
     </tr>
     
     <tr>
     <td>Description</td>
     <?php
-        echo ' <td class="last"> <textarea name="description" id="" cols="30" rows="5" >'.$listId[0]['Description'].'</textarea></td>';
+        echo ' <td class="last"> <textarea name="description" id="" cols="30" rows="5" ></textarea></td>';
     ?>
     </tr>
     
@@ -52,13 +41,10 @@
     <td>Image</td>
     <?php
 
-        echo ' <td class="last"><img src="' . $listId[0]['Image'] . '" >'; 
-        echo '<input type="file" name="image" >';
+        echo ' <td class="last"><input type="file" name="image" ></td>';
     ?>
     
-    <?php 
-    echo '</td>';
-    ?>
+    
     </tr>
 
     <tr>
@@ -74,6 +60,18 @@
         
         echo ' </td>';
     ?>
+    </tr>
+    <tr>
+        <td>Create_at</td>
+        <?php
+        echo ' <td class="last"><input type="text" name="create_at" > </td>';
+        ?>       
+    </tr>
+    <tr>
+        <td>Update_at</td>
+        <?php
+        echo ' <td class="last"><input type="text" name="update_at" > </td>';
+        ?>       
     </tr>
     <tr>
     <td></td>

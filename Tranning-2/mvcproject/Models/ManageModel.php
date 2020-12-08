@@ -40,11 +40,24 @@ class ManageModel extends BaseModel
         // echo $sql;
         
     }
-
-
-    public function delete()
+    public function newRow($data=[])
     {
-        echo __METHOD__;
+        $rows = implode(',',array_keys($data));
+        $newValue = array_map(function($value){
+            return "'".$value . "'";
+        },array_values($data));
+        $table = self::TABLE;
+        $newValue = implode(',',$newValue);
+        $sql = "insert into $table values ($newValue)";
+        $query = $this->_query($sql);
+        
+    }
+
+    public function delete($id)
+    {
+        $table = self::TABLE;
+        $sql = "delete from $table where id=$id";
+        $this->_query($sql);
     }
 
     
