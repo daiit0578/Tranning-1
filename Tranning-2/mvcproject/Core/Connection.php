@@ -26,4 +26,19 @@ class Database
 //     echo 'that bai' . mysqli_error($conn);
 // echo 'Kết nối thành công';
 // mysqli_close($conn);
+// $sql = "CREATE TABLE manage(
+//     Id INT(11)NULL AUTO_INCREMENT PRIMARY KEY,
+//     Title VARCHAR(250) ,
+//     Description VARCHAR(250) ,
+//     Image VARCHAR(100) ,
+//     Status VARCHAR(250) ,
+//     Create_at Datetime ,
+//     Update_at Datetime
+//     )";
+//if(mysqli_query($conn,$sql))
+//     echo 'thanh cong';
+// else
+//     echo 'that bai' . mysqli_error($conn);
+// mysqli_close($conn);
+
 ?>

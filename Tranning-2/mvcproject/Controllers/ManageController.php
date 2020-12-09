@@ -27,15 +27,16 @@ class ManageController extends BaseController
     }
     public function createNewRow()
     {
-        if(isset($_POST['title'],$_POST['description'],$_POST['image'],$_POST['status'],$_POST['id']
-                ,$_POST['create_at'],$_POST['update_at'])){
+        if(isset($_POST['title'],$_POST['description'],$_POST['image'],$_POST['status']
+                )){
             $title =$_POST['title'];
             $description = $_POST['description'];
             $image = 'Views/assets/image/'.$_POST['image'];
             $status = $_POST['status'];
-            $id = $_POST['id'];
-            $create_at = $_POST['create_at'];
-            $update_at = $_POST['update_at'];
+            $id = "";
+            date_default_timezone_set("asia/Ho_Chi_Minh");            
+            $create_at = date("Y/m/d h:i:sa");
+            $update_at = "";
             $data = [$id,$title,$description,$image,$status,$create_at,$update_at];            
             $this->manageModel->newRow($data);
         }

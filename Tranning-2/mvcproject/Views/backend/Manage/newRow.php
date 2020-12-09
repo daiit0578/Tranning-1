@@ -16,12 +16,7 @@
     <table class="table table-striped"  >
    
 <form action="index.php?controller=manage&action=createNewRow" method ='post'>
-    <tr>
-        <td>Id</td>
-        <?php
-        echo ' <td class="last"><input type="text" name="id" > </td>';
-        ?>       
-    </tr>
+    
     
     <tr>
     <td class = "first">Title</td>
@@ -61,18 +56,8 @@
         echo ' </td>';
     ?>
     </tr>
-    <tr>
-        <td>Create_at</td>
-        <?php
-        echo ' <td class="last"><input type="text" name="create_at" > </td>';
-        ?>       
-    </tr>
-    <tr>
-        <td>Update_at</td>
-        <?php
-        echo ' <td class="last"><input type="text" name="update_at" > </td>';
-        ?>       
-    </tr>
+   
+    
     <tr>
     <td></td>
     <td  > <input class="btn btn-light" style="width:100px" type="submit" value="Submit"></td>

@@ -28,13 +28,15 @@ class ManageModel extends BaseModel
         $image = '"'.$select[2].'"';
         $status = '"'.$select[3].'"';
         $id = $select[4];
+        date_default_timezone_set("asia/Ho_Chi_Minh");
+        $update_at = '"'.date("Y/m/d h:i:sa").'"';
         $table = self::TABLE;
         if($image=='"Views/assets/image/"')
         {
-            $sql = "update $table set Description=$description,Title=$title,Status =$status where id =$id";
+            $sql = "update $table set Description=$description,Title=$title,Status =$status,Update_at= $update_at where id =$id";
              
         }else{
-            $sql = "update $table set Description=$description,Title=$title,Image=$image,Status =$status where id =$id";
+            $sql = "update $table set Description=$description,Title=$title,Image=$image,Status =$status,Update_at= $update_at where id =$id";
         }
         $query = $this->_query($sql);
         // echo $sql;
